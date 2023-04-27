@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML-Shopping-Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- https://www.favicon-generator.org/ -->
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/generator/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/generator/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/generator/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/generator/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/generator/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/generator/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/generator/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/generator/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/generator/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/generator/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/generator/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/generator/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/generator/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#3498DB">
+    <meta name="msapplication-TileImage" content="assets/favicon/generator/ms-icon-144x144.png">
+    <meta name="theme-color" content="#3498DB">
+    <link rel="manifest" href="./manifest.json">
+    
+    <script src="./vendors/jszip/jszip.min.js"></script>
+    <script src="./vendors/jszip/FileSaver.min.js"></script>
+    
+    <script src="./vendors/vue/vue.min.js"></script>
+    <script src="./vendors/jquery/jquery.min.js"></script>
+
+    <script src="./vendors/semantic-ui/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./vendors/semantic-ui/semantic.min.css">
+
+    <link rel="stylesheet/less" type="text/css" href="./styles/styles.less" />
+    <script src="./vendors/less/load-before-less.js"></script>
+    <script src="./vendors/less/less.min.js"></script>
+    
+    <script src="./vendors/date-helper.js"></script>
+
+    <script src="./vendors/vue/httpVueLoader.js"></script>
+    <script src="./vendors/vue/httpVueLoaderLess.js"></script>
+    
+    <script src="./vendors/utils/ClipboardUtils.js"></script>
+  </head>
+  <body>
+
+    <div id="app">
+
+      <form method="post" style="height: calc(100vh - 2rem);">
+        <textarea id="summernote" name="editordata"></textarea>
+      </form>      
+
+      <button type="button" id="copyHTML" class="btn btn-primary" style="width: 100vw; height: 2rem !important;">COPY HTML</button>
+    </div>
+    
+
+    <!-- ================================================ -->
+    <!-- include libraries(jQuery, bootstrap) -->
+
+    <script src="./vendors/popper.min.js"></script>
+    
+ <link href="./bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="./bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="./summernote/summernote.min.css" rel="stylesheet">
+<script src="./summernote/summernote.min.js"></script>
+    
+
+    <script src="./service-worker-loader.js"></script>
+    <script>
+      $(document).ready(function() {
+  $('#summernote').summernote({
+    //height: 'calc(100vh - 2rem)',                 // set editor height
+        //placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['view', ['codeview', 'fullscreen', 'help']]
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+        ],
+
+    });
+
+  $('#summernote').on('summernote.change', function(we, contents, $editable) {
+    //console.log(contents);
+
+    localStorage.setItem('summernote.code', contents)
+  });
+
+  let code = localStorage.getItem('summernote.code')
+  if (code) {
+    $('#summernote').summernote('code', code)
+  }
+
+
+  $('#copyHTML').click(() => {
+    let content = $('#summernote').summernote('code')
+
+    ClipboardUtils.copyPlainString(content)
+  })
+
+  });
+    </script>
+  </body>
+</html>
