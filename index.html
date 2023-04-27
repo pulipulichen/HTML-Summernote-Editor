@@ -93,11 +93,25 @@
     //console.log(contents);
 
     localStorage.setItem('summernote.code', contents)
+
+    let replace= contents.replaceAll(/<\/?[^>]+(>|$)/gi, "").trim()
+    if (replace === '') {
+      replace = 'Summernote'
+    }
+
+    document.title = replace
   });
 
   let code = localStorage.getItem('summernote.code')
   if (code) {
     $('#summernote').summernote('code', code)
+
+    let replace = code.replaceAll(/<\/?[^>]+(>|$)/gi, "").trim()
+    if (replace === '') {
+      replace = 'Summernote'
+    }
+
+    document.title = replace
   }
 
 
