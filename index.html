@@ -30,8 +30,10 @@
     <script src="./vendors/vue/vue.min.js"></script>
     <script src="./vendors/jquery/jquery.min.js"></script>
 
+    <!--
     <script src="./vendors/semantic-ui/semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./vendors/semantic-ui/semantic.min.css">
+    -->
 
     <link rel="stylesheet/less" type="text/css" href="./styles/styles.less" />
     <script src="./vendors/less/load-before-less.js"></script>
@@ -65,11 +67,12 @@
 <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- include summernote css/js -->
-<link href="./summernote/summernote.min.css" rel="stylesheet">
+<link href="./summernote/summernote.min.css" rel="stylesheet" />
 <script src="./summernote/summernote.min.js"></script>
     
-
+<!--
     <script src="./service-worker-loader.js"></script>
+  -->
     <script>
       $(document).ready(function() {
   $('#summernote').summernote({
@@ -84,7 +87,10 @@
           ['color', ['color']],
           ['para', ['ul', 'ol', 'paragraph']],
           ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
+          ['font', ['fontname']],
+          ['insert', ['link', 'picture', 'video', 'doc']],
+          ['misc', ['codeview', 'fullscreen']],
+          ['help', ['help']]
         ],
 
     });
