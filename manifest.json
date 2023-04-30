@@ -1,11 +1,11 @@
 {
-  "name": "Shopping-Search",
-  "short_name": "ShoppingSearch",
+  "name": "Summernote",
+  "short_name": "Summernote",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#3498DB",
   "theme_color": "#2980B9",
-  "description": "Searching several shopping websites from a input form.",
+  "description": "A HTML editor with Summernote.",
   "icons": [{
    "src": "assets/favicon/generator/android-icon-36x36.png",
    "sizes": "36x36",
