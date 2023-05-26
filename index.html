@@ -45,6 +45,9 @@
     <script src="./vendors/vue/httpVueLoaderLess.js"></script>
     
     <script src="./vendors/utils/ClipboardUtils.js"></script>
+
+    <script src="./vendors/turndown/turndown.js"></script>
+    <script src="./vendors/showdown/showdown.min.js"></script>
   </head>
   <body>
 
@@ -54,7 +57,12 @@
         <textarea id="summernote" name="editordata"></textarea>
       </form>      
 
-      <button type="button" id="copyHTML" class="btn btn-primary" style="width: 100vw; height: 2rem !important;">COPY HTML</button>
+      <div class="buttons-container" style="text-align:center; position:fixed; bottom: 0; width: 100%;">
+        <button type="button" id="copyHTML" class="btn btn-primary" style="width: calc(40vw - 0.5rem) !important; height: 2rem !important;">COPY HTML</button>
+        <button type="button" id="copyTEXT" class="btn btn-primary" style="width: calc(30vw - 0.5rem) !important; height: 2rem !important;">COPY TEXT</button>
+        <button type="button" id="copyMarkdown" class="btn btn-primary" style="width: calc(30vw - 0.5rem) !important; height: 2rem !important;">COPY MARKDOWN</button>
+      </div>
+        
     </div>
     
 
@@ -73,61 +81,9 @@
 <!--
     <script src="./service-worker-loader.js"></script>
   -->
-    <script>
-      $(document).ready(function() {
-  $('#summernote').summernote({
-    //height: 'calc(100vh - 2rem)',                 // set editor height
-        //placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['view', ['codeview', 'fullscreen', 'help']]
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['font', ['fontname']],
-          ['insert', ['link', 'picture', 'video', 'doc']],
-          ['misc', ['codeview', 'fullscreen']],
-          ['help', ['help']]
-        ],
-
-    });
-
-  $('#summernote').on('summernote.change', function(we, contents, $editable) {
-    //console.log(contents);
-
-    localStorage.setItem('summernote.code', contents)
-
-    let replace= contents.replaceAll(/<\/?[^>]+(>|$)/gi, "").trim()
-    if (replace === '') {
-      replace = 'Summernote'
-    }
-
-    document.title = replace
-  });
-
-  let code = localStorage.getItem('summernote.code')
-  if (code) {
-    $('#summernote').summernote('code', code)
-
-    let replace = code.replaceAll(/<\/?[^>]+(>|$)/gi, "").trim()
-    if (replace === '') {
-      replace = 'Summernote'
-    }
-
-    document.title = replace
-  }
-
-
-  $('#copyHTML').click(() => {
-    let content = $('#summernote').summernote('code')
-
-    ClipboardUtils.copyPlainString(content)
-  })
-
-  });
-    </script>
+    <script src="scripts/script-summernote.js"></script>
+    <script src="scripts/script-copy-html.js"></script>
+    <script src="scripts/script-copy-text.js"></script>
+    <script src="scripts/script-copy-markdown.js"></script>
   </body>
 </html>
