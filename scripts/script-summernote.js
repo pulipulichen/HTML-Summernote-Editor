@@ -5,8 +5,8 @@ $(document).ready(function() {
         tabsize: 2,
         height: 120,
         toolbar: [
-          ['misc', ['codeview', 'fullscreen']],
-          ['view', ['codeview', 'fullscreen', 'help']],
+          // ['misc', ['codeview', 'fullscreen']],
+          ['view', ['codeview', 'fullscreen']],
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],
           ['color', ['color']],
