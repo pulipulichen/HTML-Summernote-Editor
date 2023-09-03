@@ -5,7 +5,8 @@ $(document).ready(function() {
         tabsize: 2,
         height: 120,
         toolbar: [
-          ['view', ['codeview', 'fullscreen', 'help']]
+          ['misc', ['codeview', 'fullscreen']],
+          ['view', ['codeview', 'fullscreen', 'help']],
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],
           ['color', ['color']],
@@ -13,7 +14,6 @@ $(document).ready(function() {
           ['table', ['table']],
           ['font', ['fontname']],
           ['insert', ['link', 'picture', 'video', 'doc']],
-          ['misc', ['codeview', 'fullscreen']],
           ['help', ['help']]
         ],
 
